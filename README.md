@@ -6,7 +6,7 @@ Funcionalidades Principais:
 	•	Raspagem de dados em tempo real do site da Embrapa das categorias: Produção, Processamento, Comercialização, Importação e Exportação.
 	•	Autenticação segura utilizando JWT.
 	•	Documentação automática e interativa com Swagger UI.
-	•	Fallback para arquivo CSV local em caso de falha na raspagem.
+	•	Fallback para arquivos CSV local em caso de falha na raspagem.
 
 
 
@@ -33,7 +33,11 @@ vitibrasil-api/
 |   ├── __init__.py
 |   └── main.py
 ├── data/
-│   └── fallback_data.csv
+│   ├── comercio.csv
+│   ├── exportacao.csv
+│   ├── importacao.csv
+│   ├── processamento.csv
+│   ├── producao.csv
 ├── requirements.txt
 ├── README.md
 └── Procfile
@@ -43,7 +47,7 @@ vitibrasil-api/
 `models/`: Pydantic do user
 `routes/`: Contém a rota para obter os dados.
 `services/`: Serviços para lógica de negócios, como scraping.
-`data/`: Arquivo CSV para fallback
+`data/`: Arquivos CSV para fallback
 `utils/`: Utilitários, fallback para caso scrap falhe.
 `main.py`: Ponto de entrada para iniciar o aplicativo.
 `README.md`: Documentação do projeto.
@@ -65,13 +69,13 @@ A documentação interativa da API está disponível em /docs, fornecida automat
 
 🛠️ Raspagem de Dados com BeautifulSoup
 
-A raspagem dos dados é realizada utilizando a biblioteca BeautifulSoup. A função scrape_data no módulo scraper.py acessa as páginas específicas do site da Embrapa, extrai as tabelas de interesse e as converte para o formato JSON. Em caso de falha na raspagem, a função load_fallback_data no módulo fallback.py fornece os dados a partir de arquivo CSV local.
+A raspagem dos dados é realizada utilizando a biblioteca BeautifulSoup. A função scrape_data no módulo scraper.py acessa as páginas específicas do site da Embrapa, extrai as tabelas de interesse e as converte para o formato JSON. Em caso de falha na raspagem, a função load_fallback_data no módulo fallback.py fornece os dados a partir dos arquivos CSV local.
 
 
 
 🔄 Fallback para Arquivos Locais
 
-Caso a raspagem em tempo real falhe (por exemplo, devido a mudanças na estrutura do site ou problemas de conectividade), a API utiliza arquivo CSV local como fonte de dados alternativa. Isso garante a continuidade do serviço mesmo em situações adversas.
+Caso a raspagem em tempo real falhe (por exemplo, devido a mudanças na estrutura do site ou problemas de conectividade), a API utiliza arquivos CSV local como fonte de dados alternativa. Isso garante a continuidade do serviço mesmo em situações adversas.
 
 
 

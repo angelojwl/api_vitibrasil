@@ -1,5 +1,5 @@
 import time
-import jwt
+from jose import jwt
 
 SECRET_KEY = "senha_123_api"
 ALGORITHM = "HS256"
