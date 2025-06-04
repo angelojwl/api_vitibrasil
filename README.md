@@ -1,26 +1,18 @@
 🚀 Visão Geral do Projeto
 
-Objetivo: Fornecer uma API pública que permita consultar, em tempo real, os dados de vitivinicultura do site da Embrapa, com suporte a autenticação JWT e documentação interativa via Swagger.
+Objetivo: Fornecer uma API pública que permita consultar, em tempo real, os dados de vitivinicultura do site da Embrapa e documentação interativa via Swagger.  
 
-Funcionalidades Principais:
-	•	Raspagem de dados em tempo real do site da Embrapa das categorias: Produção, Processamento, Comercialização, Importação e Exportação.
-	•	Autenticação segura utilizando JWT.
-	•	Documentação automática e interativa com Swagger UI.
-	•	Fallback para arquivos CSV local em caso de falha na raspagem.
 
+Funcionalidades Principais:  
+	•	Raspagem de dados em tempo real do site da Embrapa das categorias: Produção, Processamento, Comercialização, Importação e Exportação.  
+	•	Documentação automática e interativa com Swagger UI.  
+	•	Fallback para arquivos CSV local em caso de falha na raspagem.  
 
 
 🗂️ Estrutura do Projeto
 ```plaintext
-vitibrasil-api/
+api_vitibrasil/
 ├── app/
-│   ├── auth/
-|   |   ├── __init__.py
-│   │   ├── jwt_handler.py
-│   │   └── auth_bearer.py
-│   ├── models/
-|   |   ├── __init__.py
-│   │   └── user.py
 │   ├── routes/
 |   |   ├── 
 │   │   └── vitibrasil.py
@@ -37,14 +29,12 @@ vitibrasil-api/
 │   ├── exportacao.csv
 │   ├── importacao.csv
 │   ├── processamento.csv
-│   ├── producao.csv
-├── requirements.txt
+│   └── producao.csv
+├── Procfile
 ├── README.md
-└── Procfile
+└── requirements.txt
 ```
 `app/`: Diretório principal do aplicativo.
-`auth/`: Autenticação por JWT
-`models/`: Pydantic do user
 `routes/`: Contém a rota para obter os dados.
 `services/`: Serviços para lógica de negócios, como scraping.
 `data/`: Arquivos CSV para fallback
@@ -54,34 +44,24 @@ vitibrasil-api/
 `requirements.txt`: Lista de dependências do projeto.
 
 
-
-🔐 Autenticação JWT
-
-A API utiliza autenticação JWT para proteger as rotas. Os usuários devem fornecer um token válido para acessar os endpoints protegidos.
-
-
-
 📄 Documentação com Swagger
 
-A documentação interativa da API está disponível em /docs, fornecida automaticamente pelo FastAPI utilizando Swagger UI. Isso permite que os usuários explorem e testem os endpoints diretamente pelo navegador.
-
+A documentação interativa da API está disponível em /docs, fornecida automaticamente pelo FastAPI utilizando Swagger UI. Isso permite que os usuários explorem e testem os endpoints diretamente pelo navegador.  
 
 
 🛠️ Raspagem de Dados com BeautifulSoup
 
-A raspagem dos dados é realizada utilizando a biblioteca BeautifulSoup. A função scrape_data no módulo scraper.py acessa as páginas específicas do site da Embrapa, extrai as tabelas de interesse e as converte para o formato JSON. Em caso de falha na raspagem, a função load_fallback_data no módulo fallback.py fornece os dados a partir dos arquivos CSV local.
-
+A raspagem dos dados é realizada utilizando a biblioteca BeautifulSoup. A função scrape_data no módulo scraper.py acessa as páginas específicas do site da Embrapa, extrai as tabelas de interesse e as converte para o formato JSON. Em caso de falha na raspagem, a função load_fallback_data no módulo fallback.py fornece os dados a partir dos arquivos CSV local.  
 
 
 🔄 Fallback para Arquivos Locais
 
-Caso a raspagem em tempo real falhe (por exemplo, devido a mudanças na estrutura do site ou problemas de conectividade), a API utiliza arquivos CSV local como fonte de dados alternativa. Isso garante a continuidade do serviço mesmo em situações adversas.
+Caso a raspagem em tempo real falhe (por exemplo, devido a mudanças na estrutura do site ou problemas de conectividade), a API utiliza arquivos CSV local como fonte de dados alternativa. Isso garante a continuidade do serviço mesmo em situações adversas.  
 
 
-
-🔗 Repositório e Link de Deploy
-	•	Repositório GitHub: https://github.com/angelojwl/api_vitibrasil
-	•	Link de Deploy (Heroku): https://vitibrasil-api.herokuapp.com
+🔗 Repositório e Link de Deploy  
+	•	Repositório GitHub: https://github.com/angelojwl/api_vitibrasil  
+	•	Link de Deploy (Heroku): https://vitibrasil-api.herokuapp.com  
 
 
 
@@ -98,7 +78,6 @@ Caso a raspagem em tempo real falhe (por exemplo, devido a mudanças na estrutur
                    │    JWT       │       │   Local      │
                    └──────────────┘       └──────────────┘
 ```
-
 
 
 ⚙️ Como executar o projeto
